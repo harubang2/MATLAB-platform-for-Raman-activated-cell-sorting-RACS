@@ -171,7 +171,7 @@ fprintf(fp5,'Raman_shift(cm-1) ');
 fprintf(fp5,'%f ',R_s);
 fprintf(fp5,'\n');
 for i=1:size(y,1)
-    fprintf(fp5,'%s ',cell_num(i));
+%     fprintf(fp5,'%s ',cell_num(i));
     fprintf(fp5,'%f ',y(i,:));
     fprintf(fp5,'\n');
 end
@@ -355,7 +355,7 @@ while true
         axes(handles.Label_2);
         plot(A, D, 'b-', 'LineWidth', 1)
         legend(sprintf('Acquisition time = %.2f s',IntegrationTime))
-        title(sprintf('Measured spectra cell# %d', count_cell))
+        title(sprintf('Measured spectra'))
         xlabel('Raman shift (cm-1)')
         ylabel('Intensity (AU)')
         axis([400 3300 -inf inf])
