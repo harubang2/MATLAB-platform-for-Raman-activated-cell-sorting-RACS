@@ -190,6 +190,14 @@ for k=2:10
     B2 = find(IDX==outer_cent_2);
     if k > 2
         if size(old_B1,1) == size(B1,1)
+            k = k-1;
+            rng('default')      % for reproducibility of the K-means clustering results
+            [IDX, cent] = kmeans(y,k);
+            cent_2 = cent(:,1);
+            outer_cent = find(ismember(cent_2,max(cent_2)));
+            outer_cent_2 = find(ismember(cent_2,max(cent_2(cent_2<max(cent_2)))));
+            B1 = find(IDX==outer_cent);
+            B2 = find(IDX==outer_cent_2);
             break;
         end
     end
@@ -845,6 +853,15 @@ while true
             B2 = find(IDX==outer_cent_2);
             if k > 2
                 if size(old_B1,1) == size(B1,1)
+                    k = k-1;
+                    rng('default')      % for reproducibility of the K-means clustering results
+                    [IDX, cent] = kmeans(y,k);
+                    cent_2 = cent(:,1);
+                    outer_cent = find(ismember(cent_2,max(cent_2)));
+                    outer_cent_2 = find(ismember(cent_2,max(cent_2(cent_2<max(cent_2)))));
+                    B1 = find(IDX==outer_cent);
+                    B2 = find(IDX==outer_cent_2);
+                    
                     break;
                 end
             end
